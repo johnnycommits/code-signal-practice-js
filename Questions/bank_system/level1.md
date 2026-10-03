@@ -23,12 +23,12 @@ All operations will have a `timestamp` parameter — a stringified timestamp in 
 
 Initially, the banking system does not contain any accounts, so implement operations to allow account creation, deposits, and transfers between 2 different accounts.
 
-*   `create_account(self, timestamp: int, account_id: str) -> bool` — should create a new account with the given identifier if it doesn’t already exist. Returns `True` if the account was successfully created or `False` if an account with `account_id` already exists.
-*   `deposit(self, timestamp: int, account_id: str, amount: int) -> int | None` — should deposit the given `amount` of money to the specified account `account_id`. Returns the balance of the account after the operation has been processed. If the specified account doesn’t exist, should return `None`.
-*   `transfer(self, timestamp: int, source_account_id: str, target_account_id: str, amount: int) -> int | None` — should transfer the given amount of money from account `source_account_id` to account `target_account_id`. Returns the balance of `source_account_id` if the transfer was successful or `None` otherwise.
-    *   Returns `None` if `source_account_id` or `target_account_id` doesn’t exist.
-    *   Returns `None` if `source_account_id` and `target_account_id` are the same.
-    *   Returns `None` if account `source_account_id` has insufficient funds to perform the transfer.
+*   `createAccount(timestamp, accountId)` — should create a new account with the given identifier if it doesn’t already exist. Returns `true` if the account was successfully created or `false` if an account with `accountId` already exists.
+*   `deposit(timestamp, accountId, amount)` — should deposit the given `amount` of money to the specified account `accountId`. Returns the balance of the account after the operation has been processed. If the specified account doesn’t exist, should return `null`.
+*   `transfer(timestamp, sourceAccountId, targetAccountId, amount)` — should transfer the given amount of money from account `sourceAccountId` to account `targetAccountId`. Returns the balance of `sourceAccountId` if the transfer was successful or `null` otherwise.
+    *   Returns `null` if `sourceAccountId` or `targetAccountId` doesn’t exist.
+    *   Returns `null` if `sourceAccountId` and `targetAccountId` are the same.
+    *   Returns `null` if account `sourceAccountId` has insufficient funds to perform the transfer.
 
 ## Examples
 
@@ -36,17 +36,17 @@ The example below shows how these operations should work:
 
 | Queries | Explanations |
 | --- | --- |
-| create\_account(1, "account1") | returns True |
-| create\_account(2, "account1") | returns False; this account already exists |
-| create\_account(3, "account2") | returns True |
-| deposit(4, "non-existing", 2700) | returns None |
+| createAccount(1, "account1") | returns true |
+| createAccount(2, "account1") | returns false; this account already exists |
+| createAccount(3, "account2") | returns true |
+| deposit(4, "non-existing", 2700) | returns null |
 | deposit(5, "account1", 2700) | returns 2700 |
-| transfer(6, "account1", "account2", 2701) | returns None; this account has insufficient funds for the transfer |
+| transfer(6, "account1", "account2", 2701) | returns null; this account has insufficient funds for the transfer |
 | transfer(7, "account1", "account2", 200) | returns 2500 |
 
 
 ## Test
-You can execute the test cases for this level by running the following command in the terminal: `pytest Questions/bank_system/test_bank_system.py::TestLevel1 -v` from the project root directory.
+You can execute the test cases for this level by running the following command in the terminal: `npx mocha Questions/bank_system/specs/level1Tests.js` from the project root directory.
 
 
 *   **\[execution time limit\]** 3 seconds

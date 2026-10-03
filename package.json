@@ -1,0 +1,29 @@
+{
+  "name": "libresignal",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Local JavaScript practice environment for CodeSignal Industry Coding Framework challenges",
+  "scripts": {
+    "test": "mocha \"Questions/*/specs/level{1,2,3,4}Tests.js\"",
+    "test:bank": "mocha \"Questions/bank_system/specs/level{1,2,3,4}Tests.js\"",
+    "test:bank:level1": "mocha Questions/bank_system/specs/level1Tests.js",
+    "test:bank:level2": "mocha \"Questions/bank_system/specs/{level1,level2}Tests.js\"",
+    "test:bank:level3": "mocha \"Questions/bank_system/specs/{level1,level2,level3}Tests.js\"",
+    "test:bank:level4": "mocha \"Questions/bank_system/specs/{level1,level2,level3,level4}Tests.js\"",
+    "test:database": "mocha \"Questions/in_memory_database/specs/level{1,2,3,4}Tests.js\"",
+    "test:database:level1": "mocha Questions/in_memory_database/specs/level1Tests.js",
+    "test:database:level2": "mocha \"Questions/in_memory_database/specs/{level1,level2}Tests.js\"",
+    "test:database:level3": "mocha \"Questions/in_memory_database/specs/{level1,level2,level3}Tests.js\"",
+    "test:database:level4": "mocha \"Questions/in_memory_database/specs/{level1,level2,level3,level4}Tests.js\"",
+    "test:sandbox": "mocha \"Questions/*/specs/sandboxTests.js\"",
+    "test:sandbox:bank": "mocha Questions/bank_system/specs/sandboxTests.js",
+    "test:sandbox:database": "mocha Questions/in_memory_database/specs/sandboxTests.js"
+  },
+  "devDependencies": {
+    "chai": "^4.5.0",
+    "mocha": "^11.7.2"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

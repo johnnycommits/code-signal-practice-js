@@ -1,0 +1,20 @@
+{
+  "editor.inlineSuggest.enabled": false,
+  "editor.inlineSuggest.edits.enabled": false,
+  "editor.suggest.preview": false,
+  "editor.snippetSuggestions": "none",
+  "editor.wordBasedSuggestions": "off",
+  "javascript.suggest.completeJSDocs": false,
+  "typescript.suggest.completeJSDocs": false,
+  "github.copilot.enable": {
+    "*": false,
+    "javascript": false,
+    "json": false,
+    "markdown": false,
+    "plaintext": false,
+    "scminput": false
+  },
+  "github.copilot.editor.enableAutoCompletions": false,
+  "github.copilot.inlineSuggest.enable": false,
+  "continue.enableTabAutocomplete": false
+}

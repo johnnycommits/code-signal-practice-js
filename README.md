@@ -1,170 +1,116 @@
 # LibreSignal 🚦
 
-A practice framework for CodeSignal's Industry Coding Framework (ICF) assessments.
+A local JavaScript practice environment for CodeSignal's Industry Coding Framework (ICF) assessments.
 
-## 🎯 Purpose
+The repository mirrors the progressive format of the assessment: each challenge has four levels, and each new level extends the system without changing the behavior required by earlier levels.
 
-This repository provides a realistic simulation environment to prepare for **CodeSignal's Industry Coding Framework (ICF)** assessments. It mirrors the actual test format with multi-level coding problems where each subsequent level builds upon the previous one.
+## Requirements
 
-## 💡 Inspiration
+- Node.js 18 or newer
+- npm
 
-I've long observed that coding assessments—whether CodeSignal, LeetCode, or others—ultimately come down to **practice**. However, CodeSignal's platform doesn't offer practice tests that closely resemble their actual assessments.
+## Setup
 
-After reading [How hackable are automated coding assessments?](https://yanirseroussi.com/2023/05/26/how-hackable-are-automated-coding-assessments/), I came to a deep realization: **CodeSignal is no different than the SAT**. More practice will definitively boost your score. This repo exists to fill that gap—giving you a realistic practice environment so you can walk into your assessment with confidence.
-
-## 📊 Scoring & What You Need to Pass
-
-### Score to Percentile Conversion
-
-CodeSignal provides a [conversion table](https://support.codesignal.com/hc/en-us/articles/13260678794775-Converting-Historical-Coding-Score-Thresholds-to-Assessment-Score) to translate your score to a percentile ranking.
-
-### My Experience
-
-I passed the screening for a well-funded fintech startup with a score of **480**, which corresponds to the **82nd percentile**. Based on this, here's a general guideline:
-
-| Score | Percentile | Likelihood of Passing |
-|-------|------------|----------------------|
-| < 450 | < 70% | May struggle with competitive companies |
-| 480 | ~82% | Passed startup screening |
-| **500+** | **~85%+** | **Safe target for most companies** |
-
-**🎯 Aim for 500+ to confidently pass most company screenings.**
-
-### 💡 Pro Tip: Modularity Matters
-
-CodeSignal's ICF assessments evaluate **modularity** as a scoring factor. Demonstrate your understanding of **SOLID principles**:
-
-- **Encapsulate your data in classes** — Don't just use dictionaries everywhere
-- **Think about extensibility** — Each level builds on the previous one
-- **Use proper OOP patterns** — Not only does this showcase your software engineering skills, but it makes Levels 3 and 4 significantly easier
-
-For example, instead of storing account data in a simple dict, create an `Account` class with methods for deposit, withdraw, and transaction history. When you reach Level 3 (scheduled payments) and Level 4 (account merging), you'll thank yourself.
-
-## 🚀 Usage
-
-### Prerequisites
-
-- Python 3.10+
-- pip
-
-### Setup
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/yourusername/LibreSignal.git
-   cd LibreSignal
-   ```
-
-2. **Create a virtual environment** (recommended)
-   ```bash
-   python -m venv .venv
-   source .venv/bin/activate  # On macOS/Linux
-   # or
-   .venv\Scripts\activate     # On Windows
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-### Implementing Your Solution
-
-1. Navigate to the question folder (e.g., `Questions/bank_system/`)
-2. Read the problem description in the level markdown files (`level1.md`, `level2.md`, etc.)
-3. Implement your solution in `simulation.py`
-4. **Start with Level 1 and progress sequentially** — just like the real test!
-
-### Running Tests
-
-Each level has its own test suite. Run tests for a specific level from the <u>**root directory**</u>:
-
-#### 🏦 Bank System
+Install the test dependencies once from the repository root:
 
 ```bash
-# Test a specific level
-pytest Questions/bank_system/test_bank_system.py::TestLevel1 -v
-pytest Questions/bank_system/test_bank_system.py::TestLevel2 -v
-pytest Questions/bank_system/test_bank_system.py::TestLevel3 -v
-pytest Questions/bank_system/test_bank_system.py::TestLevel4 -v
-
-# Run all tests
-pytest Questions/bank_system/test_bank_system.py -v
+npm install
 ```
 
-#### 🗄️ In-Memory Database
+## Challenges
+
+Two complete challenges are ready to implement:
+
+- `Questions/bank_system`
+- `Questions/in_memory_database`
+
+Each challenge contains:
+
+```text
+challenge/
+├── level1.md
+├── level2.md
+├── level3.md
+├── level4.md
+├── src/
+│   ├── <challenge>Interface.js
+│   └── <challenge>.js
+└── specs/
+    ├── level1Tests.js
+    ├── level2Tests.js
+    ├── level3Tests.js
+    ├── level4Tests.js
+    └── sandboxTests.js
+```
+
+The implementation classes use CommonJS and extend a separate interface class, matching the structure used by CodeSignal JavaScript filesystem tasks. All implementation methods are intentionally left as TODOs.
+
+The `workers` and `storage` directories are retained as statement-only reference material because the source repository did not include implementations or test suites for them.
+
+## Working Through a Challenge
+
+1. Choose a challenge.
+2. Read `level1.md`.
+3. Implement only the Level 1 methods in the challenge's `src` implementation file.
+4. Run the Level 1 suite.
+5. Continue one level at a time, extending your existing design without breaking earlier behavior.
+
+Implementation files:
+
+- `Questions/bank_system/src/bankSystem.js`
+- `Questions/in_memory_database/src/inMemoryDatabase.js`
+
+Do not edit the interface files or official specs while practicing. Use `sandboxTests.js` for experiments.
+
+## Running Tests
+
+Run the complete suite, including every official level for both challenges:
 
 ```bash
-# Test a specific level
-pytest Questions/in_memory_database/test_in_memory_database.py::TestLevel1 -v
-pytest Questions/in_memory_database/test_in_memory_database.py::TestLevel2 -v
-pytest Questions/in_memory_database/test_in_memory_database.py::TestLevel3 -v
-pytest Questions/in_memory_database/test_in_memory_database.py::TestLevel4 -v
-
-# Run all tests
-pytest Questions/in_memory_database/test_in_memory_database.py -v
+npm test
 ```
 
-## 📁 Project Structure
+Run cumulative levels for the Bank System challenge:
 
-```
-LibreSignal/
-├── README.md
-├── requirements.txt
-└── Questions/
-    ├── bank_system/
-    │   ├── level1.md               # Level 1 requirements
-    │   ├── level2.md               # Level 2 requirements
-    │   ├── level3.md               # Level 3 requirements
-    │   ├── level4.md               # Level 4 requirements
-    │   ├── simulation.py           # Your implementation goes here
-    │   ├── simulation_solution.py  # Reference solution
-    │   └── test_bank_system.py     # Test suite
-    └── in_memory_database/
-        ├── level1.md               # Level 1 requirements
-        ├── level2.md               # Level 2 requirements
-        ├── level3.md               # Level 3 requirements
-        ├── level4.md               # Level 4 requirements
-        ├── simulation.py           # Your implementation goes here
-        ├── simulation_solution.py  # Reference solution
-        └── test_in_memory_database.py  # Test suite
+```bash
+npm run test:bank:level1
+npm run test:bank:level2
+npm run test:bank:level3
+npm run test:bank:level4
 ```
 
-## 📚 Official Documentation
+Run cumulative levels for the In-memory Database challenge:
 
-For a deeper understanding of how CodeSignal's ICF works, refer to the official technical brief:
+```bash
+npm run test:database:level1
+npm run test:database:level2
+npm run test:database:level3
+npm run test:database:level4
+```
 
-📄 [Industry Coding Skills Evaluation Framework Technical Brief](https://discover.codesignal.com/rs/659-AFH-023/images/Industry-Coding-Skills-Evaluation-Framework-CodeSignal-Skills-Evaluation-Lab-Short.pdf)
+For example, `npm run test:bank:level3` runs Bank System Levels 1, 2, and 3 without running any database tests. Earlier behavior remains part of every later-level checkpoint within that exercise.
 
-## ⏱️ Test Day Tips
+Run one complete challenge:
 
-1. **Read ALL levels first** — Understanding what's coming helps you design a modular solution from the start
-2. **Don't over-engineer Level 1** — But do set up proper data structures
-3. **Test frequently** — Run the test suite after implementing each method
-4. **Manage your time** — ~70 minutes total, so roughly 15-20 min per level
-5. **Partial credit exists** — If stuck on Level 4, make sure Levels 1-3 are solid
+```bash
+npm run test:bank
+npm run test:database
+```
 
-## 🤝 Contributing
+Mocha prints every passing and failing test in the terminal. Failures are expected until you implement the corresponding TODO methods.
 
-Found a bug? Have a new question to add? Contributions are welcome!
+## Sandbox Tests
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/new-question`)
-3. Commit your changes (`git commit -m 'Add new question set'`)
-4. Push to the branch (`git push origin feature/new-question`)
-5. Open a Pull Request
+Each challenge has an editable `specs/sandboxTests.js`. Its starter test is skipped and clearly marked unofficial. You can unskip it or add test cases while experimenting without modifying the official level specs.
 
-## 📝 License
+## Scoring Intent
 
-This project is open source and available under the [MIT License](LICENSE).
+The public tests retain the original repository's level boundaries and behavior. Like the real ICF assessment, later levels deliberately require you to extend or refactor prior work while preserving everything that already passed. Aim for a modular design, but build the implementation yourself—the repository contains no reference solution.
 
----
+## Additional Statement-Only Exercises
 
-**Good luck with your assessment!** 🍀
+`Questions/workers` and `Questions/storage` contain additional problem statements from the original repository. They are not included in `npm test` because the original repository did not supply executable implementations or tests for those exercises.
 
-*Remember: It's just practice. The more you do, the better you get.*
+## License
 
----
-
-**Last Updated:** March 2, 2026  
-*Made with [I-hate-doing-meaningless-coding-questions-but-I-want-a-job mindset] in Boston*
+This project follows the license terms of the original repository.
